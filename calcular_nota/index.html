@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Curso Javascript Completo 2018</title>
+	<meta charset="utf-8">
+
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
+
+	<script src="beluga.js"></script>
+
+</head>
+
+<body>
+	<div class="container">
+		<h1>Curso Javascript Completo 2018</h1>
+	</div>
+
+
+	<section>
+		<div class="container">
+
+			<h2>Média dos alunos</h2>
+			<table class="table js-tabela">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Nota 1</th>
+						<th>Nota 2</th>
+						<th>Nota 3</th>
+						<th>Nota 4</th>
+						<th>Média</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="aluno1">
+						<td class="aluno-nome">Gertrude</td>
+						<td class="aluno-nota">10</td>
+						<td class="aluno-nota">8.5</td>
+						<td class="aluno-nota">9</td>
+						<td class="aluno-nota">7.5</td>
+						<td class="aluno-m"></td>
+					</tr>
+
+					<tr class="aluno">
+						<td class="aluno-nome">Rey</td>
+						<td class="aluno-nota">5</td>
+						<td class="aluno-nota">8.5</td>
+						<td class="aluno-nota">6.5</td>
+						<td class="aluno-nota">7.5</td>
+						<td class="aluno-m"></td>
+					</tr>
+
+					<tr class="aluno">
+						<td class="aluno-nome">Jessilda</td>
+						<td class="aluno-nota">8</td>
+						<td class="aluno-nota">8.5</td>
+						<td class="aluno-nota">7</td>
+						<td class="aluno-nota">7.5</td>
+						<td class="aluno-m"></td>
+					</tr>
+
+					<tr class="aluno">
+						<td class="aluno-nome">Lindóia</td>
+						<td class="aluno-nota">6.5</td>
+						<td class="aluno-nota">8.5</td>
+						<td class="aluno-nota">10</td>
+						<td class="aluno-nota">7.5</td>
+						<td class="aluno-m"></td>
+					</tr>
+					<tr class="aluno">
+						<td class="aluno-nome">Creysson</td>
+						<td class="aluno-nota">10</td>
+						<td class="aluno-nota">9.5</td>
+						<td class="aluno-nota">10</td>
+						<td class="aluno-nota">8.5</td>
+						<td class="aluno-m"></td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+	</section>
+
+	<script>
+
+
+		var qtd_alunos = document.querySelectorAll('.aluno').length;
+		//console.log(qtd_alunos);
+		// alunos_notas = document.getElementsByClassName('aluno');
+		for (let i = 0; i < qtd_alunos; i++) {
+			var colunas = document.getElementsByClassName('aluno-nota');
+			//console.log(colunas)
+			var notas = pegarNotas(colunas);
+			debugger
+			var media = calcularMedia.apply(this, notas);
+			//console.log(media);
+			document.querySelectorAll('.aluno-m')[i].textContent = media;
+
+
+
+			//debugger
+		}
+
+		function pegarNotas(colunas) {
+
+			var arr = [];
+			for (var i = 0; i < colunas; i++) {
+				//var nota = parseFloat(notas[i].innerHTML);
+				arr.push(parseFloat(notas[i].textContent));
+				console.log(arr);
+			}
+			//return arr;
+
+		}
+		//var arr_notas = Array.from(alunos_notas);
+
+		//var notas = [];
+		//debugger;
+		// for (var i = 0; i <= arr_notas.length; i++) {
+		// 	parseFloat(arr_notas[i]);
+		// }
+		//console.log(calcularMedia(10, 5, 6, 8));
+
+
+
+
+
+	</script>
+
+</body>
+
+</html>
