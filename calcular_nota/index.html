@@ -8,7 +8,7 @@
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
 
-	<script src="beluga.js"></script>
+	<script src="main.js"></script>
 
 </head>
 
@@ -34,7 +34,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr class="aluno1">
+					<tr class="aluno">
 						<td class="aluno-nome">Gertrude</td>
 						<td class="aluno-nota">10</td>
 						<td class="aluno-nota">8.5</td>
@@ -84,49 +84,55 @@
 	</section>
 
 	<script>
-
-
-		var qtd_alunos = document.querySelectorAll('.aluno').length;
-		//console.log(qtd_alunos);
+	
+		var qtd_alunos = document.querySelectorAll('.aluno');
+		
 		// alunos_notas = document.getElementsByClassName('aluno');
-		for (let i = 0; i < qtd_alunos; i++) {
-			var colunas = document.getElementsByClassName('aluno-nota');
-			//console.log(colunas)
-			var notas = pegarNotas(colunas);
-			debugger
+		var x = 0;
+
+		while(qtd_alunos[x]){
+
+			// pegar todas as notas de cada linha : LEMBRAR QUE NESSE EXEMPLO, PEGAR APENAS 1 LINHA POR VEZ
+			var aluno = document.querySelectorAll('.aluno')[x];
+			
+			var colunas_nota = aluno.getElementsByClassName('aluno-nota');
+			//console.log(colunas_nota)
+			var notas = pegarNotas(colunas_nota);
+			
 			var media = calcularMedia.apply(this, notas);
-			//console.log(media);
-			document.querySelectorAll('.aluno-m')[i].textContent = media;
-
-
-
 			//debugger
+			//console.log(media);
+			document.querySelectorAll('.aluno-m')[x].textContent = media;
+			x++;
+
 		}
 
-		function pegarNotas(colunas) {
+		// FAZENDO COM FOR-EACH
+		// Object.values(document.querySelectorAll('.aluno')).forEach(function(aluno){
 
+		// 	var colunas_nota = aluno.getElementsByClassName('aluno-nota');
+		// 	var notas = pegarNotas(colunas_nota);
+		// 	var media = calcularMedia.apply(this, notas);
+
+		// 	aluno.querySelectorAll('.aluno-m')[0].textContent = media;
+		// 	// aluno.querySelectorAll('.aluno-m').textContent = media;
+		// });
+
+
+		//Função para pegar nas notas de cada linha em formato Float 
+		function pegarNotas(colunas_nota) {
 			var arr = [];
-			for (var i = 0; i < colunas; i++) {
-				//var nota = parseFloat(notas[i].innerHTML);
-				arr.push(parseFloat(notas[i].textContent));
-				console.log(arr);
+			var x = 0;
+			while(colunas_nota[x]){
+				arr.push(parseFloat(colunas_nota[x].textContent));
+				//console.log(arr);
+				x++;
 			}
-			//return arr;
 
-		}
-		//var arr_notas = Array.from(alunos_notas);
-
-		//var notas = [];
-		//debugger;
-		// for (var i = 0; i <= arr_notas.length; i++) {
-		// 	parseFloat(arr_notas[i]);
-		// }
-		//console.log(calcularMedia(10, 5, 6, 8));
-
-
-
-
-
+			return arr;
+		}	
+		
+		
 	</script>
 
 </body>
